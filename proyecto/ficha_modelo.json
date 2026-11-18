@@ -1,0 +1,66 @@
+{
+  "grupo": "Grupo omega",
+  "problema": "segmentacion",
+  "modelo": "Isolation Forest + LOF (5 %) para anomalías, retiradas antes de segmentar con K-Means (k=4)",
+  "metricas": {
+    "silueta_kmeans": 0.1076,
+    "davies_bouldin": 2.285,
+    "estabilidad_ari": 0.8583,
+    "estabilidad_ari_con_anomalias": 0.7469,
+    "usuarios_segmentados": 754,
+    "pct_anomalos": 0.0346,
+    "recall_sembradas_if": 1.0,
+    "recall_sembradas_lof": 0.0,
+    "recall_sembradas_ambos": 0.0,
+    "tasa_fraude_anomalos": 0.1667,
+    "tasa_fraude_resto": 0.0859
+  },
+  "hiperparametros": {
+    "orden": "anomalías primero, luego segmentación sin ellas",
+    "kmeans": {
+      "n_clusters": 4,
+      "n_init": 20
+    },
+    "variables": [
+      "edad",
+      "ingreso_mensual",
+      "antiguedad_meses",
+      "n_transacciones",
+      "monto_medio",
+      "monto_max",
+      "pct_noche",
+      "pct_dispositivo_nuevo",
+      "distancia_media",
+      "intentos_medios"
+    ],
+    "log": [
+      "ingreso_mensual",
+      "monto_medio",
+      "monto_max",
+      "distancia_media"
+    ],
+    "isolation_forest": {
+      "contamination": 0.05
+    },
+    "lof": {
+      "n_neighbors": 20,
+      "contamination": 0.05
+    },
+    "variables_riesgo": [
+      "pct_noche",
+      "pct_dispositivo_nuevo",
+      "distancia_media",
+      "intentos_medios",
+      "ratio_max"
+    ]
+  },
+  "semilla": 42,
+  "semilla_datos": 416534,
+  "fecha": "2026-11-17 20:42",
+  "versiones": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1"
+  }
+}
